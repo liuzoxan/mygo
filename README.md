@@ -1,4 +1,5 @@
 一个GO工程中主要包含以下三个目录：
+
 src：源代码文件
 pkg：包文件
 bin：相关bin文件
@@ -14,6 +15,7 @@ step7: 编译调试包
        go test hellogo
        go install hellogo
        这时在pkg文件夹中可以发现会有一个相应的操作系统文件夹如linux_amd64, 在这个文件夹中会有 hellogo 文件夹，在该文件中有hellogo.a文件
+
 step8: 编译主程序
        go build gopath/bin/hello.go
        成功后会生成 hello 文件
