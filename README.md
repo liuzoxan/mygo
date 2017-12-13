@@ -19,3 +19,8 @@ step7: 编译调试包
 step8: 编译主程序
        go build gopath/bin/hello.go
        成功后会生成 hello 文件
+
+Logging: see https://github.com/cihub/seelog/wiki/Quick-start
+    go get github.com/cihub/seelog
+    go install github.com/cihub/seelog
+    go build gopath/bin/seelog.go

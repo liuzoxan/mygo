@@ -1,0 +1,17 @@
+<seelog>
+    <outputs>
+        <splitter  formatid="common">
+            <console formatid="console_colored"/>
+            <file path="log/seelog.log"/>
+            <rollingfile type="date" filename="log/seelog_date.log" datepattern="2006-01-02" maxrolls="3"/>
+        </splitter>
+        <filter levels="critical">
+            <file path="log/critical.log" formatid="critical"/>
+        </filter>
+    </outputs>
+    <formats>
+        <format id="common" format="%Date %Time [%LEV] %Msg%n"/>
+        <format id="critical" format="%Time %Date %RelFile %Func %Msg"/>
+        <format id="console_colored"  format="%EscM(46)%Level%EscM(49) %Msg%n%EscM(0)"/>
+    </formats>
+</seelog>
