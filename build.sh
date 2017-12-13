@@ -26,12 +26,12 @@ if [ "$1" != "" ]; then
 fi
 
 if [ "$2" == "debug" ]; then
-    go build -ldflags "-X main._VERSION_=$VERSION.${reversion}" ${GOPATH}/bin/${tag}.go
+    go build -ldflags "-X main._VERSION_=$VERSION.${reversion}" ${GOPATH}/src/hellogo/bin/${tag}.go
     if [ $? != 0 ]; then
         exit 1
     fi
 else 
-    go build -ldflags "-X main._VERSION_=$VERSION.${reversion}" ${GOPATH}/bin/${tag}.go
+    go build -ldflags "-X main._VERSION_=$VERSION.${reversion}" ${GOPATH}/src/hellogo/bin/${tag}.go
     if [ $? != 0 ]; then
         exit 1
     fi
