@@ -1,0 +1,10 @@
+<seelog>
+    <outputs>
+        <splitter  formatid="common">
+            <console/>
+        </splitter>
+    </outputs>
+    <formats>
+        <format id="common" format="%Date %Time [%LEV] %Msg%n"/>
+    </formats>
+</seelog>
