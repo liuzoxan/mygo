@@ -23,6 +23,8 @@
 
 # 常用的package
 Logging: see https://github.com/cihub/seelog/wiki/Quick-start
+```bash
     go get github.com/cihub/seelog  
     go install github.com/cihub/seelog  
     go build gopath/bin/seelog.go  
+```
