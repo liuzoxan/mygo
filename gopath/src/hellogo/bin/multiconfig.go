@@ -5,17 +5,17 @@ import (
 	"github.com/koding/multiconfig"
 )
 
-type Config struct {
-	Name   string `required:"true"`
-	Server Server
-	Log    Log
+type APPConfig struct {
+	Name         string `required:"true"`
+	ServerConfig ServerConfig
+	LogConfig    LogConfig
 }
 
-type Server struct {
+type ServerConfig struct {
 	Port int `default:"6060"`
 }
 
-type Log struct {
+type LogConfig struct {
 	Runtime string `required:"true"`
 	Status  string `required:"true"`
 }
@@ -26,12 +26,12 @@ func main() {
 	mc := multiconfig.NewWithPath("./conf/multiconfig.toml") // supports TOML, JSON and YAML
 
 	// Get an empty struct for your configuration
-	serverConf := new(Config)
+	serverConf := new(APPConfig)
 
 	// Populated the serverConf struct
 	//err := m.Load(serverConf) // Check for error
 	mc.MustLoad(serverConf) // Panic's if there is any error
 
 	// Access now populated fields
-	fmt.Println(serverConf.Name, serverConf.Server.Port, serverConf.Log)
+	fmt.Println(serverConf.Name, serverConf.ServerConfig.Port, serverConf.LogConfig)
 }

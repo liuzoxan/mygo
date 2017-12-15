@@ -1,8 +1,8 @@
 Name = "mygo"
 
-[Server]
+[ServerConfig]
 Port = 8000
 
-[Log]
+[LogConfig]
 Runtime = "./conf/seelog_runtime.xml"
 Status = "./conf/seelog_status.xml"
