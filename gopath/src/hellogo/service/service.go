@@ -2,8 +2,20 @@ package service
 
 import (
 	//"hellogo/util"
+	"encoding/json"
 	"net/http"
+	"runtime"
 )
+
+type Ping struct {
+	Pong string
+}
+
+type Status struct {
+	GOOS         string
+	GORoot       string
+	NumGoroutine int
+}
 
 func DoAdmin(res http.ResponseWriter, req *http.Request) {
 	query := req.URL.Query()
@@ -25,6 +37,8 @@ func DoAdmin(res http.ResponseWriter, req *http.Request) {
 	switch action[0] {
 	case "ping":
 		ping(query, res)
+	case "status":
+		status(res)
 	default:
 		res.WriteHeader(http.StatusBadRequest)
 		res.Write([]byte("unknown action\n"))
@@ -33,6 +47,17 @@ func DoAdmin(res http.ResponseWriter, req *http.Request) {
 }
 
 func ping(query map[string][]string, res http.ResponseWriter) {
-	res.Write([]byte("Pong\n"))
+	data := Ping{Pong: "pong"}
+	json.NewEncoder(res).Encode(data)
+	return
+}
+
+func status(res http.ResponseWriter) {
+	data := Status{
+		GOOS:         runtime.GOOS,
+		GORoot:       runtime.GOROOT(),
+		NumGoroutine: runtime.NumGoroutine(),
+	}
+	json.NewEncoder(res).Encode(data)
 	return
 }
