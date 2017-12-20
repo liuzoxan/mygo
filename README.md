@@ -28,3 +28,8 @@ Logging: see https://github.com/cihub/seelog/wiki/Quick-start
     go install github.com/cihub/seelog  
     go build gopath/bin/seelog.go  
 ```
+
+Multiconfig: see
+```bash
+    go get github.com/koding/multiconfig
+```
