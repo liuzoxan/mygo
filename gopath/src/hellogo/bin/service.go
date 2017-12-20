@@ -4,10 +4,11 @@ import (
 	"flag"
 	"fmt"
 	"hellogo/service"
-	"hellogo/util"
 	"net/http"
 	"os"
+	"os/signal"
 	"runtime"
+	"syscall"
 	"time"
 )
 
@@ -36,18 +37,29 @@ func main() {
 	server := &http.Server{Addr: ":8080"}
 	http.HandleFunc("/admin", service.DoAdmin)
 	fmt.Println(time.Now().Format("2006-01-02 15:04:05"), " ready to start http server")
+
+	//  增加kill信号处理
+	go func() {
+		sigchan := make(chan os.Signal, 1)
+		signal.Notify(sigchan, os.Interrupt, os.Kill, syscall.SIGTERM)
+		sig := <-sigchan
+		fmt.Println("get shutdown signal:", sig)
+		server.Shutdown(nil)
+
+		//util.WriteDisk()
+		//logger.Flush()
+		os.Exit(0)
+	}()
+
 	if err := server.ListenAndServe(); err != nil {
 		fmt.Println("start http server failed: ", err.Error())
 		goto EXIT1
 	}
 
-	//logger.Flush()
-	server.Shutdown(nil)
-	os.Exit(0)
+	fmt.Println("Should not go here!!!")
 
 EXIT1:
-	util.WriteDisk()
-	//logger.Runtime.Info("close redis sender.")
+	//util.WriteDisk()
 	//logger.Flush()
 	os.Exit(1)
 }
