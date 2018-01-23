@@ -33,3 +33,14 @@ Multiconfig: see
 ```bash
     go get github.com/koding/multiconfig
 ```
+
+# 内部gitlab依赖
+接口定义及公共方法
+http://gitlab.mobvista.com/common/pipefiter_framework/tree/master
+由于go get 无法直接支持gitlab,获取方法如下：
+git config --global url."git@gitlab.mobvista.com/common/pipefiter_framework.git".insteadOf "https://gitlab.mobvista.com/common/pipefiter_framework.git"
+go get -v -u --insecure "gitlab.mobvista.com/common/pipefiter_framework/pipefilter"
+ 
+DEMO 程序
+http://gitlab.mobvista.com/chao.cai/Prototypes/tree/master/go/pipe_filter_structure
+
