@@ -1,10 +1,14 @@
 package: github.com/lzxbill7/mygo
-
 excludeDirs:
 - conf
 - log
 - trash
-
 import:
 - package: github.com/spaolacci/murmur3
   version: ^1.1.0
+- package: github.com/smartystreets/goconvey
+  version: ^1.6.3
+  subpackages:
+  - convey
+- package: github.com/cihub/seelog
+  version: ^2.6.0

@@ -1,6 +1,25 @@
-hash: c276b18a58f6fbc8361947b70a0d2f6730e7b70466258128499a56fd861039bb
-updated: 2019-01-19T19:20:29.947536+08:00
+hash: 2f0eb9add33570423277bb496806630a8ba71fcfd6465c734ced0b0a04f3ad31
+updated: 2019-01-19T20:05:27.525418+08:00
 imports:
+- name: github.com/cihub/seelog
+  version: d2c6e5aa9fbfdd1c624e140287063c7730654115
+- name: github.com/smartystreets/goconvey
+  version: 9e8dc3f972df6c8fcc0375ef492c24d0bb204857
+  subpackages:
+  - convey
+  - convey/gotest
+  - convey/reporting
 - name: github.com/spaolacci/murmur3
   version: 9f5d223c60793748f04a9d5b4b4eacddfc1f755d
-testImports: []
+testImports:
+- name: github.com/gopherjs/gopherjs
+  version: 0892b62f0d9fb5857760c3cfca837207185117ee
+  subpackages:
+  - js
+- name: github.com/jtolds/gls
+  version: 77f18212c9c7edc9bd6a33d383a7b545ce62f064
+- name: github.com/smartystreets/assertions
+  version: eb5b59917fa21f01252cee37e84631c7fb502d82
+  subpackages:
+  - internal/go-render/render
+  - internal/oglematchers
