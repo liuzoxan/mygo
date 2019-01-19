@@ -1,2 +1,2 @@
-/.idea/
-/gopath/pkg/
+/.idea
+/vendor
