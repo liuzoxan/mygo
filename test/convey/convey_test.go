@@ -1,8 +1,8 @@
 package convey
 
 import (
-	"testing"
 	. "github.com/smartystreets/goconvey/convey"
+	"testing"
 )
 
 func TestSpec1(t *testing.T) {

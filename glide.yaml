@@ -12,3 +12,11 @@ import:
   - convey
 - package: github.com/cihub/seelog
   version: ^2.6.0
+
+# for china firewall
+- package: golang.org/x/sys/unix
+  repo:    git@github.com:golang/sys.git
+- package: golang.org/x/text/transform
+  repo:    git@github.com:golang/text.git
+- package: golang.org/x/text/unicode/norm
+  repo:    git@github.com:golang/text.git
