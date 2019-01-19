@@ -1,5 +1,5 @@
-hash: cdd78154d517831668e24ee7ca8c380984a4ef74abb3d5d67d7ebc46bf342833
-updated: 2019-01-19T22:01:55.073007+08:00
+hash: 2f0eb9add33570423277bb496806630a8ba71fcfd6465c734ced0b0a04f3ad31
+updated: 2019-01-19T22:26:42.89438+08:00
 imports:
 - name: github.com/cihub/seelog
   version: d2c6e5aa9fbfdd1c624e140287063c7730654115
@@ -11,58 +11,15 @@ imports:
   - convey/reporting
 - name: github.com/spaolacci/murmur3
   version: 9f5d223c60793748f04a9d5b4b4eacddfc1f755d
-- name: golang.org/x/sys/unix
-  version: 11f53e03133963fb11ae0588e08b5e0b85be8be5
-  repo: git@github.com:golang/sys.git
-- name: golang.org/x/text/transform
-  version: e6919f6577db79269a6443b9dc46d18f2238fb5d
-  repo: git@github.com:golang/text.git
-- name: golang.org/x/text/unicode/norm
-  version: e6919f6577db79269a6443b9dc46d18f2238fb5d
-  repo: git@github.com:golang/text.git
 testImports:
-- name: github.com/fsnotify/fsnotify
-  version: c2828203cd70a50dcccfb2761f8b1f8ceef9a8e9
 - name: github.com/gopherjs/gopherjs
   version: 0892b62f0d9fb5857760c3cfca837207185117ee
   subpackages:
   - js
-- name: github.com/hashicorp/hcl
-  version: ef8a98b0bbce4a65b5aa4c368430a80ddc533168
-  subpackages:
-  - hcl/ast
-  - hcl/parser
-  - hcl/printer
-  - hcl/scanner
-  - hcl/strconv
-  - hcl/token
-  - json/parser
-  - json/scanner
-  - json/token
 - name: github.com/jtolds/gls
   version: 77f18212c9c7edc9bd6a33d383a7b545ce62f064
-- name: github.com/magiconair/properties
-  version: c2353362d570a7bfa228149c62842019201cfb71
-- name: github.com/mitchellh/mapstructure
-  version: bb74f1db0675b241733089d5a1faa5dd8b0ef57b
-- name: github.com/pelletier/go-toml
-  version: c01d1270ff3e442a8a57cddc1c92dc1138598194
 - name: github.com/smartystreets/assertions
   version: eb5b59917fa21f01252cee37e84631c7fb502d82
   subpackages:
   - internal/go-render/render
   - internal/oglematchers
-- name: github.com/spf13/afero
-  version: 787d034dfe70e44075ccc060d346146ef53270ad
-  subpackages:
-  - mem
-- name: github.com/spf13/cast
-  version: 8965335b8c7107321228e3e3702cab9832751bac
-- name: github.com/spf13/jwalterweatherman
-  version: 7c0cea34c8ece3fbeb2b27ab9b59511d360fb394
-- name: github.com/spf13/pflag
-  version: 3ebe029320b2676d667ae88da602a5f854788a8a
-- name: github.com/spf13/viper
-  version: 41cd1c3aa32b2685fae6c296e6f044bc68922c0e
-- name: gopkg.in/yaml.v2
-  version: 5420a8b6744d3b0345ab293f6fcba19c978f1183
