@@ -2,5 +2,5 @@
 Learning golang programming gc-friendly
 
 # Thanks
-Thanks to hatonly's code!
+Thanks to hatlonely's code!
 
