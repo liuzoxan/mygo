@@ -1,28 +1,26 @@
-hash: 9964cbdb4df50ad722cc80f33a059c782e6d25935d2ecc78e13d453a062d5441
-updated: 2019-01-21T17:10:45.606016+08:00
+hash: 99def994ac8233805b22a61045223101cb7166dd5a5d65d1301f03e1dc62742a
+updated: 2019-02-22T14:26:59.32643+08:00
 imports:
 - name: github.com/cihub/seelog
   version: d2c6e5aa9fbfdd1c624e140287063c7730654115
+- name: github.com/golang/protobuf
+  version: aa810b61a9c79d51363740d207bb46cf8e620ed5
+  subpackages:
+  - protoc-gen-go
 - name: github.com/konsorten/go-windows-terminal-sequences
   version: 5c8c8bd35d3832f5d134ae1e1e375b69a4d25242
-- name: github.com/kpango/glg
-  version: 5f885902859fd186545d1344d3d32d2ad846b481
 - name: github.com/mailru/easyjson
   version: 3fdea8d05856a0c8df22ed4bc71b3219245e4485
   subpackages:
   - buffer
   - jlexer
   - jwriter
-- name: github.com/op/go-logging
-  version: b2cb9fa56473e98db8caba80237377e83fe44db5
 - name: github.com/pquerna/ffjson
   version: d49c2bc1aa135aad0c6f4fc2056623ec78f5d5ac
   subpackages:
   - ffjson
   - fflib/v1
   - fflib/v1/internal
-- name: github.com/ScottMansfield/nanolog
-  version: 89d2cd66f50a20b720e2ecad9d3d5d07b7128f84
 - name: github.com/sirupsen/logrus
   version: e1e72e9de974bd926e5c56f83753fba2df402ce5
 - name: github.com/smartystreets/goconvey
@@ -36,21 +34,9 @@ imports:
 - name: github.com/spf13/viper
   version: 6d33b5a963d922d182c91e8a1c88d81fd150cfd4
 - name: github.com/ugorji/go
-  version: b4c50a2b199d93b13dc15e78929cfb23bfdf21ab
+  version: 8fd0f8d918c8f0b52d0af210a812ba882cc31a1e
   subpackages:
   - codec
-- name: go.uber.org/atomic
-  version: 1ea20fb1cbb1cc08cbd0d913a96dead89aa18289
-- name: go.uber.org/multierr
-  version: 3c4937480c32f4c13a875a1829af76c98ca3d40a
-- name: go.uber.org/zap
-  version: eeedf312bc6c57391d84767a4cd413f02a917974
-  subpackages:
-  - buffer
-  - internal/bufferpool
-  - internal/color
-  - internal/exit
-  - zapcore
 - name: golang.org/x/crypto
   version: a49355c7e3f8fe157a85be2f77e6e269a0f89602
   subpackages:
@@ -60,6 +46,8 @@ imports:
   subpackages:
   - unix
   - windows
+- name: google.golang.org/grpc
+  version: a02b0774206b209466313a0b525d2c738fe407eb
 testImports:
 - name: github.com/buger/jsonparser
   version: 2cac668e8456b4284edb0715e17e2af02d3ec993
@@ -98,6 +86,8 @@ testImports:
   subpackages:
   - config
   - uritemplates
+- name: github.com/op/go-logging
+  version: b2cb9fa56473e98db8caba80237377e83fe44db5
 - name: github.com/pelletier/go-toml
   version: c01d1270ff3e442a8a57cddc1c92dc1138598194
 - name: github.com/pkg/errors
