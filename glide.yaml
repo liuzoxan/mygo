@@ -25,3 +25,7 @@ import:
 - package: google.golang.org/genproto
 - package: github.com/golang/protobuf
   version: master
+- package: git.apache.org/thrift.git
+  version: v0.9.3
+  subpackages:
+  - lib/go/thrift

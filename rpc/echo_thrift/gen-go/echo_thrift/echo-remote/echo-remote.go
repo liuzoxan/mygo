@@ -4,7 +4,7 @@
 package main
 
 import (
-	"echo_thrift"
+	"github.com/lzxbill7/mygo/rpc/echo_thrift/gen-go/echo_thrift"
 	"flag"
 	"fmt"
 	"git.apache.org/thrift.git/lib/go/thrift"

@@ -1,6 +1,10 @@
-hash: 78b6352506404b43cdc92afabdfaa4a00cc9a1e8486971cddf106112cfcec01c
-updated: 2019-02-23T13:03:59.594928992+08:00
+hash: 9701a8ce2d17542d9cf628212e37adb7acfdffe7a8e92bc99f41931c8e9d5f9e
+updated: 2019-02-23T22:34:36.08981727+08:00
 imports:
+- name: git.apache.org/thrift.git
+  version: 53dd39833a08ce33582e5ff31fa18bb4735d6731
+  subpackages:
+  - lib/go/thrift
 - name: github.com/cihub/seelog
   version: d2c6e5aa9fbfdd1c624e140287063c7730654115
 - name: github.com/golang/protobuf
