@@ -17,7 +17,7 @@ var _ = bytes.Equal
 type Echo interface {
 	// Parameters:
 	//  - Req
-	Echo(req *EchoReq) (r *EchoRes, err error)
+	Echo(req *Req) (r *Res, err error)
 }
 
 type EchoClient struct {
@@ -48,14 +48,14 @@ func NewEchoClientProtocol(t thrift.TTransport, iprot thrift.TProtocol, oprot th
 
 // Parameters:
 //  - Req
-func (p *EchoClient) Echo(req *EchoReq) (r *EchoRes, err error) {
+func (p *EchoClient) Echo(req *Req) (r *Res, err error) {
 	if err = p.sendEcho(req); err != nil {
 		return
 	}
 	return p.recvEcho()
 }
 
-func (p *EchoClient) sendEcho(req *EchoReq) (err error) {
+func (p *EchoClient) sendEcho(req *Req) (err error) {
 	oprot := p.OutputProtocol
 	if oprot == nil {
 		oprot = p.ProtocolFactory.GetProtocol(p.Transport)
@@ -77,7 +77,7 @@ func (p *EchoClient) sendEcho(req *EchoReq) (err error) {
 	return oprot.Flush()
 }
 
-func (p *EchoClient) recvEcho() (value *EchoRes, err error) {
+func (p *EchoClient) recvEcho() (value *Res, err error) {
 	iprot := p.InputProtocol
 	if iprot == nil {
 		iprot = p.ProtocolFactory.GetProtocol(p.Transport)
@@ -185,7 +185,7 @@ func (p *echoProcessorEcho) Process(seqId int32, iprot, oprot thrift.TProtocol) 
 
 	iprot.ReadMessageEnd()
 	result := EchoEchoResult{}
-	var retval *EchoRes
+	var retval *Res
 	var err2 error
 	if retval, err2 = p.handler.Echo(args.Req); err2 != nil {
 		x := thrift.NewTApplicationException(thrift.INTERNAL_ERROR, "Internal error processing echo: "+err2.Error())
@@ -220,16 +220,16 @@ func (p *echoProcessorEcho) Process(seqId int32, iprot, oprot thrift.TProtocol) 
 // Attributes:
 //  - Req
 type EchoEchoArgs struct {
-	Req *EchoReq `thrift:"req,1" json:"req"`
+	Req *Req `thrift:"req,1" json:"req"`
 }
 
 func NewEchoEchoArgs() *EchoEchoArgs {
 	return &EchoEchoArgs{}
 }
 
-var EchoEchoArgs_Req_DEFAULT *EchoReq
+var EchoEchoArgs_Req_DEFAULT *Req
 
-func (p *EchoEchoArgs) GetReq() *EchoReq {
+func (p *EchoEchoArgs) GetReq() *Req {
 	if !p.IsSetReq() {
 		return EchoEchoArgs_Req_DEFAULT
 	}
@@ -273,7 +273,7 @@ func (p *EchoEchoArgs) Read(iprot thrift.TProtocol) error {
 }
 
 func (p *EchoEchoArgs) readField1(iprot thrift.TProtocol) error {
-	p.Req = &EchoReq{}
+	p.Req = &Req{}
 	if err := p.Req.Read(iprot); err != nil {
 		return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Req), err)
 	}
@@ -319,16 +319,16 @@ func (p *EchoEchoArgs) String() string {
 // Attributes:
 //  - Success
 type EchoEchoResult struct {
-	Success *EchoRes `thrift:"success,0" json:"success,omitempty"`
+	Success *Res `thrift:"success,0" json:"success,omitempty"`
 }
 
 func NewEchoEchoResult() *EchoEchoResult {
 	return &EchoEchoResult{}
 }
 
-var EchoEchoResult_Success_DEFAULT *EchoRes
+var EchoEchoResult_Success_DEFAULT *Res
 
-func (p *EchoEchoResult) GetSuccess() *EchoRes {
+func (p *EchoEchoResult) GetSuccess() *Res {
 	if !p.IsSetSuccess() {
 		return EchoEchoResult_Success_DEFAULT
 	}
@@ -372,7 +372,7 @@ func (p *EchoEchoResult) Read(iprot thrift.TProtocol) error {
 }
 
 func (p *EchoEchoResult) readField0(iprot thrift.TProtocol) error {
-	p.Success = &EchoRes{}
+	p.Success = &Res{}
 	if err := p.Success.Read(iprot); err != nil {
 		return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Success), err)
 	}

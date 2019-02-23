@@ -1,13 +1,13 @@
 namespace go echo_thrift
 
-struct EchoReq {
+struct Req {
     1: string msg;
 }
 
-struct EchoRes {
+struct Res {
     1: string msg;
 }
 
 service Echo {
-    EchoRes echo(1: EchoReq req);
+    Res echo(1: Req req);
 }

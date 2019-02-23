@@ -18,18 +18,18 @@ var GoUnusedProtection__ int
 
 // Attributes:
 //  - Msg
-type EchoReq struct {
+type Req struct {
 	Msg string `thrift:"msg,1" json:"msg"`
 }
 
-func NewEchoReq() *EchoReq {
-	return &EchoReq{}
+func NewReq() *Req {
+	return &Req{}
 }
 
-func (p *EchoReq) GetMsg() string {
+func (p *Req) GetMsg() string {
 	return p.Msg
 }
-func (p *EchoReq) Read(iprot thrift.TProtocol) error {
+func (p *Req) Read(iprot thrift.TProtocol) error {
 	if _, err := iprot.ReadStructBegin(); err != nil {
 		return thrift.PrependError(fmt.Sprintf("%T read error: ", p), err)
 	}
@@ -62,7 +62,7 @@ func (p *EchoReq) Read(iprot thrift.TProtocol) error {
 	return nil
 }
 
-func (p *EchoReq) readField1(iprot thrift.TProtocol) error {
+func (p *Req) readField1(iprot thrift.TProtocol) error {
 	if v, err := iprot.ReadString(); err != nil {
 		return thrift.PrependError("error reading field 1: ", err)
 	} else {
@@ -71,8 +71,8 @@ func (p *EchoReq) readField1(iprot thrift.TProtocol) error {
 	return nil
 }
 
-func (p *EchoReq) Write(oprot thrift.TProtocol) error {
-	if err := oprot.WriteStructBegin("EchoReq"); err != nil {
+func (p *Req) Write(oprot thrift.TProtocol) error {
+	if err := oprot.WriteStructBegin("Req"); err != nil {
 		return thrift.PrependError(fmt.Sprintf("%T write struct begin error: ", p), err)
 	}
 	if err := p.writeField1(oprot); err != nil {
@@ -87,7 +87,7 @@ func (p *EchoReq) Write(oprot thrift.TProtocol) error {
 	return nil
 }
 
-func (p *EchoReq) writeField1(oprot thrift.TProtocol) (err error) {
+func (p *Req) writeField1(oprot thrift.TProtocol) (err error) {
 	if err := oprot.WriteFieldBegin("msg", thrift.STRING, 1); err != nil {
 		return thrift.PrependError(fmt.Sprintf("%T write field begin error 1:msg: ", p), err)
 	}
@@ -100,27 +100,27 @@ func (p *EchoReq) writeField1(oprot thrift.TProtocol) (err error) {
 	return err
 }
 
-func (p *EchoReq) String() string {
+func (p *Req) String() string {
 	if p == nil {
 		return "<nil>"
 	}
-	return fmt.Sprintf("EchoReq(%+v)", *p)
+	return fmt.Sprintf("Req(%+v)", *p)
 }
 
 // Attributes:
 //  - Msg
-type EchoRes struct {
+type Res struct {
 	Msg string `thrift:"msg,1" json:"msg"`
 }
 
-func NewEchoRes() *EchoRes {
-	return &EchoRes{}
+func NewRes() *Res {
+	return &Res{}
 }
 
-func (p *EchoRes) GetMsg() string {
+func (p *Res) GetMsg() string {
 	return p.Msg
 }
-func (p *EchoRes) Read(iprot thrift.TProtocol) error {
+func (p *Res) Read(iprot thrift.TProtocol) error {
 	if _, err := iprot.ReadStructBegin(); err != nil {
 		return thrift.PrependError(fmt.Sprintf("%T read error: ", p), err)
 	}
@@ -153,7 +153,7 @@ func (p *EchoRes) Read(iprot thrift.TProtocol) error {
 	return nil
 }
 
-func (p *EchoRes) readField1(iprot thrift.TProtocol) error {
+func (p *Res) readField1(iprot thrift.TProtocol) error {
 	if v, err := iprot.ReadString(); err != nil {
 		return thrift.PrependError("error reading field 1: ", err)
 	} else {
@@ -162,8 +162,8 @@ func (p *EchoRes) readField1(iprot thrift.TProtocol) error {
 	return nil
 }
 
-func (p *EchoRes) Write(oprot thrift.TProtocol) error {
-	if err := oprot.WriteStructBegin("EchoRes"); err != nil {
+func (p *Res) Write(oprot thrift.TProtocol) error {
+	if err := oprot.WriteStructBegin("Res"); err != nil {
 		return thrift.PrependError(fmt.Sprintf("%T write struct begin error: ", p), err)
 	}
 	if err := p.writeField1(oprot); err != nil {
@@ -178,7 +178,7 @@ func (p *EchoRes) Write(oprot thrift.TProtocol) error {
 	return nil
 }
 
-func (p *EchoRes) writeField1(oprot thrift.TProtocol) (err error) {
+func (p *Res) writeField1(oprot thrift.TProtocol) (err error) {
 	if err := oprot.WriteFieldBegin("msg", thrift.STRING, 1); err != nil {
 		return thrift.PrependError(fmt.Sprintf("%T write field begin error 1:msg: ", p), err)
 	}
@@ -191,9 +191,9 @@ func (p *EchoRes) writeField1(oprot thrift.TProtocol) (err error) {
 	return err
 }
 
-func (p *EchoRes) String() string {
+func (p *Res) String() string {
 	if p == nil {
 		return "<nil>"
 	}
-	return fmt.Sprintf("EchoRes(%+v)", *p)
+	return fmt.Sprintf("Res(%+v)", *p)
 }

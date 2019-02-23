@@ -4,7 +4,7 @@
 package main
 
 import (
-	"github.com/lzxbill7/mygo/rpc/echo_thrift/gen-go/echo_thrift"
+	"echo_thrift"
 	"flag"
 	"fmt"
 	"git.apache.org/thrift.git/lib/go/thrift"
@@ -20,7 +20,7 @@ func Usage() {
 	fmt.Fprintln(os.Stderr, "Usage of ", os.Args[0], " [-h host:port] [-u url] [-f[ramed]] function [arg1 [arg2...]]:")
 	flag.PrintDefaults()
 	fmt.Fprintln(os.Stderr, "\nFunctions:")
-	fmt.Fprintln(os.Stderr, "  EchoRes echo(EchoReq req)")
+	fmt.Fprintln(os.Stderr, "  Res echo(Req req)")
 	fmt.Fprintln(os.Stderr)
 	os.Exit(0)
 }
@@ -130,7 +130,7 @@ func main() {
 		}
 		factory7 := thrift.NewTSimpleJSONProtocolFactory()
 		jsProt8 := factory7.GetProtocol(mbTrans5)
-		argvalue0 := echo_thrift.NewEchoReq()
+		argvalue0 := echo_thrift.NewReq()
 		err9 := argvalue0.Read(jsProt8)
 		if err9 != nil {
 			Usage()
