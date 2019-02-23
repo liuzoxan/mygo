@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"git.apache.org/thrift.git/lib/go/thrift"
@@ -9,41 +10,40 @@ import (
 	"os"
 )
 
-type EchoHandler struct {
-}
-
-func NewEchoHandler() *EchoHandler {
-	return &EchoHandler{}
-}
-
-func (handler *EchoHandler) Echo(req *Req) (*Res, error) {
-	log.Println("server receive: ", req.Msg)
-	return &Res{Msg: req.Msg}, nil
-}
-
-func runServer(transportFactory thrift.TTransportFactory, protocolFactory thrift.TProtocolFactory, addr string, secure bool) error {
-	if secure {
-		// for secure see: http://thrift.apache.org/tutorial/go
-	}
-	var transport thrift.TServerTransport
-	var err error
-	transport, err = thrift.NewTServerSocket(addr)
-
-	if err != nil {
-		return err
-	}
-	log.Printf("%T %T", transportFactory, protocolFactory)
-	handler := NewEchoHandler()
-	processor := NewEchoProcessor(handler)
-	server := thrift.NewTSimpleServer4(processor, transport, transportFactory, protocolFactory)
-
-	log.Println("Starting the simple server... on ", addr)
-	return server.Serve()
-}
-
 func Usage() {
 	fmt.Fprintln(os.Stderr, "Usage of", os.Args[0])
 	flag.PrintDefaults()
+}
+
+var defaultCtx = context.Background()
+
+func handleClient(client *EchoClient) (err error) {
+	res, err := client.Echo(&Req{Msg:"Hello!"})
+	if err != nil {
+		return err
+	}
+	log.Println("echo :", res.Msg)
+	return nil
+}
+
+func runClient(transportFactory thrift.TTransportFactory, protocolFactory thrift.TProtocolFactory, addr string, secure bool) error {
+	var transport thrift.TTransport
+	var err error
+	if secure {
+		// see: same as server
+	}
+	transport, err = thrift.NewTSocket(addr)
+	if err != nil {
+		fmt.Println("Error opening socket:", err)
+		return err
+	}
+	transport= transportFactory.GetTransport(transport)
+	defer transport.Close()
+	if err := transport.Open(); err != nil {
+		return err
+		}
+	return handleClient(NewEchoClientFactory(transport, protocolFactory))
+
 }
 
 func main() {
@@ -84,7 +84,7 @@ func main() {
 	}
 
 	// run
-	if err := runServer(transportFactory, protocolFactory, *addr, *secure); err != nil {
-		log.Fatalf("failed to serve: %v", err)
+	if err := runClient(transportFactory, protocolFactory, *addr, *secure); err != nil {
+		log.Fatalf("failed to client: %v", err)
 	}
 }
