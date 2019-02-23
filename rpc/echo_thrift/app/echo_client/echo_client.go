@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"flag"
 	"fmt"
 	"git.apache.org/thrift.git/lib/go/thrift"
@@ -14,8 +13,6 @@ func Usage() {
 	fmt.Fprintln(os.Stderr, "Usage of", os.Args[0])
 	flag.PrintDefaults()
 }
-
-var defaultCtx = context.Background()
 
 func handleClient(client *EchoClient) (err error) {
 	res, err := client.Echo(&Req{Msg:"Hello!"})
