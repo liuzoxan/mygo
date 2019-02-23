@@ -1,4 +1,4 @@
-namespace go echo
+namespace go echo_thrift
 
 struct EchoReq {
     1: string msg;
