@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package echo;
+package echo_proto;
 
 message EchoReq {
     string msg = 1;

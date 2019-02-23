@@ -1,12 +1,17 @@
-hash: 99def994ac8233805b22a61045223101cb7166dd5a5d65d1301f03e1dc62742a
-updated: 2019-02-22T14:26:59.32643+08:00
+hash: 3b4ec737dc2599876cd264528a61682a9cbac48bc34e3f3ed56a3bd2569966cc
+updated: 2019-02-22T15:26:11.767724+08:00
 imports:
 - name: github.com/cihub/seelog
   version: d2c6e5aa9fbfdd1c624e140287063c7730654115
 - name: github.com/golang/protobuf
   version: aa810b61a9c79d51363740d207bb46cf8e620ed5
   subpackages:
+  - proto
   - protoc-gen-go
+  - ptypes
+  - ptypes/any
+  - ptypes/duration
+  - ptypes/timestamp
 - name: github.com/konsorten/go-windows-terminal-sequences
   version: 5c8c8bd35d3832f5d134ae1e1e375b69a4d25242
 - name: github.com/mailru/easyjson
@@ -41,13 +46,65 @@ imports:
   version: a49355c7e3f8fe157a85be2f77e6e269a0f89602
   subpackages:
   - ssh/terminal
+- name: golang.org/x/net
+  version: 4cb1c02c05b0e749b0365f61ae859a8e0cfceed9
+  subpackages:
+  - context
+  - http/httpguts
+  - http2
+  - http2/hpack
+  - idna
+  - internal/timeseries
+  - trace
 - name: golang.org/x/sys
   version: 7138fd3d9dc8335c567ca206f4333fb75eb05d56
   subpackages:
   - unix
   - windows
+- name: golang.org/x/text
+  version: c0fe8dde8a10c9b32154bd9bdf080b8b3d635127
+  subpackages:
+  - secure/bidirule
+  - transform
+  - unicode/bidi
+  - unicode/norm
+- name: google.golang.org/genproto
+  version: ff3583edef7de132f219f0efc00e097cabcc0ec0
+  subpackages:
+  - googleapis/rpc/status
 - name: google.golang.org/grpc
   version: a02b0774206b209466313a0b525d2c738fe407eb
+  subpackages:
+  - balancer
+  - balancer/base
+  - balancer/roundrobin
+  - binarylog/grpc_binarylog_v1
+  - codes
+  - connectivity
+  - credentials
+  - credentials/internal
+  - encoding
+  - encoding/proto
+  - grpclog
+  - internal
+  - internal/backoff
+  - internal/binarylog
+  - internal/channelz
+  - internal/envconfig
+  - internal/grpcrand
+  - internal/grpcsync
+  - internal/syscall
+  - internal/transport
+  - keepalive
+  - metadata
+  - naming
+  - peer
+  - resolver
+  - resolver/dns
+  - resolver/passthrough
+  - stats
+  - status
+  - tap
 testImports:
 - name: github.com/buger/jsonparser
   version: 2cac668e8456b4284edb0715e17e2af02d3ec993
@@ -109,15 +166,6 @@ testImports:
   version: 7c0cea34c8ece3fbeb2b27ab9b59511d360fb394
 - name: github.com/spf13/pflag
   version: 3ebe029320b2676d667ae88da602a5f854788a8a
-- name: golang.org/x/net
-  version: 4cb1c02c05b0e749b0365f61ae859a8e0cfceed9
-  subpackages:
-  - context
-- name: golang.org/x/text
-  version: c0fe8dde8a10c9b32154bd9bdf080b8b3d635127
-  subpackages:
-  - transform
-  - unicode/norm
 - name: golang.org/x/time
   version: fbb02b2291d28baffd63558aa44b4b56f178d650
   subpackages:
