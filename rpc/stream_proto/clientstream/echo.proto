@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package client_stream;
+
+message EchoReq {
+    string msg = 1;
+}
+
+message EchoRes {
+    string msg = 1;
+}
+
+service Echo {
+    rpc echo (stream EchoReq) returns (EchoRes);
+}
