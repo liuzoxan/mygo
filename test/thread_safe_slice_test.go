@@ -48,7 +48,7 @@ type ThreadSafeWithChannel struct {
 }
 
 func NewThreadSafeWithChannel(bufSize int) *ThreadSafeWithChannel {
-	ch = make(chan string, bufSize)
+	ch := make(chan string, bufSize)
 	return &ThreadSafeWithChannel{ch}
 }
 

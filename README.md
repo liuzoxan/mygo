@@ -6,5 +6,5 @@ Learning golang programming gc-friendly
 * third party package benchmark
 
 # Thanks
-Thanks to hatlonely's code!
+Thanks to hatlonely's code! 
 
