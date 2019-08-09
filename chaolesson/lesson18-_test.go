@@ -2,6 +2,7 @@ package chaolesson
 
 import (
 	"fmt"
+	"github.com/spotmaxtech/gokit"
 	"testing"
 )
 
@@ -56,3 +57,12 @@ func TestSomething(t *testing.T) {
 	DoSomething("hello")
 }
 
+func TestRangeFault(t *testing.T) {
+	l1 := []int{1,2,3,4,5}
+	var l2 []*int
+	for _, i := range l1 {
+		l2 = append(l2, &i)
+	}
+
+	t.Log(gokit.Prettify(l2))
+}
