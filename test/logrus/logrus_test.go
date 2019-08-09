@@ -7,10 +7,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/olivere/elastic/v7"
 	"github.com/sirupsen/logrus"
 	. "github.com/smartystreets/goconvey/convey"
-	"github.com/sohlich/elogrus"
-	"gopkg.in/olivere/elastic.v5"
 )
 
 type Person struct {
@@ -99,10 +98,11 @@ func (f *MyFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 func TestLogrusHook(t *testing.T) {
 	Convey("logrus elasticsearch hook", t, func() {
 		log := logrus.New()
-		client, err := elastic.NewClient(elastic.SetURL("http://localhost:9200"))
+		client, err := elastic.NewClient(elastic.SetURL("http://es.spotmaxtech.com"),
+			elastic.SetBasicAuth("spotmax", "HaveFun"),
+			elastic.SetSniff(false))
 		So(err, ShouldEqual, nil)
-		// _index: testlog, 日志级别: Warn
-		hook, err := elogrus.NewAsyncElasticHook(client, "localhost", logrus.WarnLevel, "testlog")
+		hook, err := NewElasticHook(client, "localhost", logrus.WarnLevel, "testlog")
 		So(err, ShouldBeNil)
 		log.AddHook(hook)
 		log.WithFields(logrus.Fields{
