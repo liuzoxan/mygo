@@ -2,8 +2,8 @@ package chaolesson
 
 import (
 	"fmt"
+	"sync"
 	"testing"
-	"time"
 )
 
 func TestGoroutine(t *testing.T) {
@@ -15,12 +15,19 @@ func TestGoroutine(t *testing.T) {
 }
 
 func TestCounter(t *testing.T) {
+	var lock sync.Mutex
+	var wg sync.WaitGroup
 	count := 0
-	for i:=0; i<5000; i++ {
+	for i := 0; i < 5000; i++ {
+		wg.Add(1)
 		go func() {
+			lock.Lock()
 			count++
+			lock.Unlock()
+			wg.Done()
 		}()
 	}
-	time.Sleep(time.Second)
+	// time.Sleep(time.Second * 5)
+	wg.Wait()
 	t.Log(count)
 }
