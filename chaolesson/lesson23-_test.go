@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sync"
 	"testing"
+	"time"
 )
 
 func TestGoroutine(t *testing.T) {
@@ -30,4 +31,30 @@ func TestCounter(t *testing.T) {
 	// time.Sleep(time.Second * 5)
 	wg.Wait()
 	t.Log(count)
+}
+
+func service() string {
+	time.Sleep(time.Millisecond * 500)
+	return "done"
+}
+
+func otherService() {
+	fmt.Println("working on something else")
+	time.Sleep(time.Millisecond * 1000)
+	fmt.Println("something else done")
+}
+
+func asyncService() chan string {
+	c := make(chan string)
+	go func() {
+		ret:= service()
+		c <- ret
+	}()
+	return c
+}
+
+func TestAsyncService(t *testing.T) {
+	c := asyncService()
+	otherService()
+	t.Log(<-c)
 }
