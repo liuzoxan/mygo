@@ -45,10 +45,12 @@ func otherService() {
 }
 
 func asyncService() chan string {
-	c := make(chan string)
+	c := make(chan string, 5)
 	go func() {
 		ret:= service()
+		fmt.Println("before ret")
 		c <- ret
+		fmt.Println("after ret")
 	}()
 	return c
 }
@@ -56,5 +58,5 @@ func asyncService() chan string {
 func TestAsyncService(t *testing.T) {
 	c := asyncService()
 	otherService()
-	t.Log(<-c)
+	fmt.Println("last", <-c)
 }
