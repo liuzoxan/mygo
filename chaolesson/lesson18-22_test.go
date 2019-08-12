@@ -66,3 +66,17 @@ func TestRangeFault(t *testing.T) {
 
 	t.Log(gokit.Prettify(l2))
 }
+
+func Test20Exit(t *testing.T) {
+	defer func() {
+		fmt.Println("finally")
+	}()
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println("recover from:", err)
+		}
+	}()
+
+	panic("panic error")
+	// os.Exit(0)
+}
