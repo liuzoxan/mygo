@@ -166,6 +166,7 @@ github.com/smartystreets/assertions v1.0.0/go.mod h1:kHHU4qYBaI3q23Pp3VPrmWhuIUr
 github.com/smartystreets/go-aws-auth v0.0.0-20180515143844-0c1422d1fdb9/go.mod h1:SnhjPscd9TpLiy1LpzGSKh3bXCfxxXuqd9xmQJy3slM=
 github.com/smartystreets/goconvey v0.0.0-20170602164621-9e8dc3f972df h1:AawEzDdiSpy07QO9efSOHQ/BRincGLxilju4pOq3k8s=
 github.com/smartystreets/goconvey v0.0.0-20170602164621-9e8dc3f972df/go.mod h1:XDJAKZRPZ1CvBcN2aX5YOUTYGHki24fSF0Iv48Ibg0s=
+github.com/smartystreets/goconvey v0.0.0-20190710185942-9d28bd7c0945 h1:N8Bg45zpk/UcpNGnfJt2y/3lRWASHNTUET8owPYCgYI=
 github.com/smartystreets/goconvey v0.0.0-20190710185942-9d28bd7c0945/go.mod h1:syvi0/a8iFYH4r/RixwvyeAJjdLS9QV7WQ/tjFTllLA=
 github.com/sohlich/elogrus v2.0.2+incompatible h1:kOMuKF8HFSOU5A+sUAMOoYWQ4LIgd1hwEt7w8Vafjbc=
 github.com/sohlich/elogrus v2.0.2+incompatible/go.mod h1:xqOrU0VVWGqKNPMPYYOlSt01bcQnHG18Q77u8667tk8=
