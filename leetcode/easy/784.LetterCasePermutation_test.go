@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func add(l *[]string, s []byte, i int) {
+func add1(l *[]string, s []byte, i int) {
 	if i == len(s)-1 {
 		*l = append(*l, string(s))
 
@@ -22,7 +22,7 @@ func add(l *[]string, s []byte, i int) {
 		*l = append(*l, string(s))
 		return
 	}
-	add(l, s, i+1)
+	add1(l, s, i+1)
 	if s[i] < 'A' {
 		return
 	}
@@ -31,17 +31,36 @@ func add(l *[]string, s []byte, i int) {
 	} else {
 		s[i] = s[i] - 32
 	}
-	add(l, s, i+1)
+	add1(l, s, i+1)
 }
 
-func letterCasePermutation1(S string) []string {
+func add(l *[]string, s *[]byte, i int) {
+	if i == len(*s) {
+		*l = append(*l, string(*s))
+	} else {
+		if (*s)[i] >= 'A' && (*s)[i] <= 'Z' {
+			add(l, s, i+1)
+			(*s)[i] += 32
+			add(l, s, i+1)
+		} else if (*s)[i] >= 'a' && (*s)[i] <= 'z' {
+			add(l, s, i+1)
+			(*s)[i] -= 32
+			add(l, s, i+1)
+		} else {
+			add(l, s, i+1)
+		}
+	}
+}
+
+func letterCasePermutation(S string) []string {
 	s := []byte(S)
 	var r []string
-	add(&r, s, 0)
+	add(&r, &s, 0)
 
 	return r
 }
-func letterCasePermutation(S string) []string {
+
+func letterCasePermutation1(S string) []string {
 	var r []string
 	s := []byte(S)
 
