@@ -34,20 +34,20 @@ func add1(l *[]string, s []byte, i int) {
 	add1(l, s, i+1)
 }
 
-func add(l *[]string, s *[]byte, i int) {
+func dfs(l *[]string, s *[]byte, i int) {
 	if i == len(*s) {
 		*l = append(*l, string(*s))
 	} else {
 		if (*s)[i] >= 'A' && (*s)[i] <= 'Z' {
-			add(l, s, i+1)
+			dfs(l, s, i+1)
 			(*s)[i] += 32
-			add(l, s, i+1)
+			dfs(l, s, i+1)
 		} else if (*s)[i] >= 'a' && (*s)[i] <= 'z' {
-			add(l, s, i+1)
+			dfs(l, s, i+1)
 			(*s)[i] -= 32
-			add(l, s, i+1)
+			dfs(l, s, i+1)
 		} else {
-			add(l, s, i+1)
+			dfs(l, s, i+1)
 		}
 	}
 }
@@ -55,7 +55,7 @@ func add(l *[]string, s *[]byte, i int) {
 func letterCasePermutation(S string) []string {
 	s := []byte(S)
 	var r []string
-	add(&r, &s, 0)
+	dfs(&r, &s, 0)
 
 	return r
 }
