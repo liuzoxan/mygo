@@ -47,7 +47,7 @@ func otherService() {
 func asyncService() chan string {
 	c := make(chan string, 5)
 	go func() {
-		ret:= service()
+		ret := service()
 		fmt.Println("before ret")
 		c <- ret
 		fmt.Println("after ret")
@@ -59,4 +59,13 @@ func TestAsyncService(t *testing.T) {
 	c := asyncService()
 	otherService()
 	fmt.Println("last", <-c)
+}
+
+func TestSelect(t *testing.T) {
+	select {
+	case ret := <-asyncService():
+		t.Log("ret", ret)
+	case <-time.After(time.Millisecond * 1500):
+		t.Error("function timeout")
+	}
 }
