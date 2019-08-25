@@ -26,9 +26,38 @@ func order(root *TreeNode, level int, levels *[][]int) {
 	order(root.Right, level+1, levels)
 }
 
-func levelOrder(root *TreeNode) [][]int {
+func levelOrder1(root *TreeNode) [][]int {
 	var levels [][]int
 	order(root, 0, &levels)
+	return levels
+}
+
+func levelOrder(root *TreeNode) [][]int {
+	var levels [][]int
+
+	var queue []*TreeNode
+	if root == nil {
+		return levels
+	}
+	queue = append(queue, root)
+
+	for len(queue) > 0 {
+		qLen := len(queue)
+		var li []int
+		for i := 0; i < qLen; i++ {
+			node := queue[0]
+			li = append(li, node.Val)
+			queue = queue[1:]
+			if node.Left != nil {
+				queue = append(queue, node.Left)
+			}
+			if node.Right != nil {
+				queue = append(queue, node.Right)
+			}
+		}
+		levels = append(levels, li)
+	}
+
 	return levels
 }
 
