@@ -2,35 +2,23 @@ package medium
 
 import (
 	. "github.com/smartystreets/goconvey/convey"
+	"strings"
 	"testing"
 )
 
 func frequencySort(s string) string {
-	bytes := []byte(s)
-	dict := make(map[byte]int)
+	dict := make(map[rune]int)
 	count := make(map[int][]string)
 
 	// bucket count
-	for _, b := range bytes {
-		if _, OK := dict[b]; !OK {
-			dict[b] = 0
-		}
-		dict[b]++
+	for _, r := range s {
+		dict[r]++
 	}
 
 	// count index
 	var max int
-	for b, c := range dict {
-		if _, OK := count[c]; !OK {
-			count[c] = []string{}
-		}
-
-		var str string
-		for j := 0; j < c; j++ {
-			str += string(b)
-		}
-		count[c] = append(count[c], str)
-
+	for r, c := range dict {
+		count[c] = append(count[c], strings.Repeat(string(r), c))
 		if c > max {
 			max = c
 		}
