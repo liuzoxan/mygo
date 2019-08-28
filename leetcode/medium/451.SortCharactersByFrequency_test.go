@@ -8,7 +8,7 @@ import (
 func frequencySort(s string) string {
 	bytes := []byte(s)
 	dict := make(map[byte]int)
-	count := make(map[int][]byte)
+	count := make(map[int][]string)
 
 	// bucket count
 	for _, b := range bytes {
@@ -22,9 +22,15 @@ func frequencySort(s string) string {
 	var max int
 	for b, c := range dict {
 		if _, OK := count[c]; !OK {
-			count[c] = []byte{}
+			count[c] = []string{}
 		}
-		count[c] = append(count[c], b)
+
+		var str string
+		for j := 0; j < c; j++ {
+			str += string(b)
+		}
+		count[c] = append(count[c], str)
+
 		if c > max {
 			max = c
 		}
@@ -33,10 +39,8 @@ func frequencySort(s string) string {
 	// index to response
 	var res string
 	for i := max; i > 0; i-- {
-		for _, b := range count[i] {
-			for j := 0; j < i; j++ {
-				res += string(b)
-			}
+		for _, str := range count[i] {
+			res += str
 		}
 	}
 
@@ -45,7 +49,7 @@ func frequencySort(s string) string {
 
 func TestFrequencySort(t *testing.T) {
 	Convey("test", t, func() {
-		So(frequencySort("tree"), ShouldEqual, "eert")
+		So(frequencySort("tree"), ShouldEqual, "eetr")
 		So(frequencySort("cccaaa"), ShouldEqual, "cccaaa")
 		So(frequencySort("Aabb"), ShouldEqual, "bbAa")
 	})
