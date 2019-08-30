@@ -6,13 +6,13 @@ import (
 )
 
 func countCharacters(words []string, chars string) int {
-	tableS := make(map[rune]int, 26)
+	tableS := [26]int{}
 	for _, r := range chars {
-		tableS[r] ++
+		tableS[r-'a'] ++
 	}
 
 	// dynamic table for loop
-	table := make(map[rune]int, 26)
+	table := [26]int{}
 
 	var res string
 	for _, str := range words {
@@ -23,8 +23,8 @@ func countCharacters(words []string, chars string) int {
 
 		match := true
 		for _, r := range str {
-			table[r]--
-			if table[r] < 0 {
+			table[r-'a']--
+			if table[r-'a'] < 0 {
 				match = false
 				break
 			}
@@ -40,6 +40,6 @@ func countCharacters(words []string, chars string) int {
 func TestCountCharacters(t *testing.T) {
 	Convey("test", t, func() {
 		So(countCharacters([]string{"cat", "bt", "hat", "tree"}, "atach"), ShouldEqual, 6)
-		So(countCharacters([]string{"hello","world","leetcode"}, "welldonehoneyr"), ShouldEqual, 10)
+		So(countCharacters([]string{"hello", "world", "leetcode"}, "welldonehoneyr"), ShouldEqual, 10)
 	})
 }
