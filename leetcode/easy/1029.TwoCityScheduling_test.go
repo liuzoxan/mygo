@@ -26,7 +26,7 @@ func (c Costs) Swap(i, j int) {
 	c[i], c[j] = c[j], c[i]
 }
 
-func twoCitySchedCost(costs [][]int) int {
+func twoCitySchedCost1(costs [][]int) int {
 	// sort by diff abs(A - B)
 	var nCosts Costs
 	for _, c := range costs {
@@ -59,6 +59,20 @@ func twoCitySchedCost(costs [][]int) int {
 			countB--
 			minCost += c.B
 		}
+	}
+
+	return minCost
+}
+
+func twoCitySchedCost(costs [][]int) int {
+	sort.Slice(costs, func(i, j int) bool {
+		return costs[i][1]-costs[i][0] > costs[j][1]-costs[j][0]
+	})
+
+	l := len(costs) / 2
+	minCost := 0
+	for i := 0; i < l; i++ {
+		minCost = minCost + costs[i][0] + costs[i+l][1]
 	}
 
 	return minCost
