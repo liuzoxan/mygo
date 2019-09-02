@@ -27,6 +27,7 @@ func (c Costs) Swap(i, j int) {
 }
 
 func twoCitySchedCost(costs [][]int) int {
+	// sort by diff abs(A - B)
 	var nCosts Costs
 	for _, c := range costs {
 		nCosts = append(nCosts, Cost{
@@ -35,8 +36,8 @@ func twoCitySchedCost(costs [][]int) int {
 		})
 	}
 	sort.Sort(nCosts)
-	// log.Println(nCosts)
 
+	// select correct city from large diff
 	countA := len(costs) / 2
 	countB := countA
 	minCost := 0
