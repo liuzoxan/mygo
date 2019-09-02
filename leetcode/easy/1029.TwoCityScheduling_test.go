@@ -8,9 +8,8 @@ import (
 )
 
 type Cost struct {
-	A    int
-	B    int
-	diff float64
+	A int
+	B int
 }
 
 type Costs []Cost
@@ -20,7 +19,7 @@ func (c Costs) Len() int {
 }
 
 func (c Costs) Less(i, j int) bool {
-	return c[i].diff > c[j].diff
+	return math.Abs(float64(c[i].A)-float64(c[i].B)) > math.Abs(float64(c[j].A)-float64(c[j].B))
 }
 
 func (c Costs) Swap(i, j int) {
@@ -31,9 +30,8 @@ func twoCitySchedCost(costs [][]int) int {
 	var nCosts Costs
 	for _, c := range costs {
 		nCosts = append(nCosts, Cost{
-			A:    c[0],
-			B:    c[1],
-			diff: math.Abs(float64(c[0]) - float64(c[1])),
+			A: c[0],
+			B: c[1],
 		})
 	}
 	sort.Sort(nCosts)
