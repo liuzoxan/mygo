@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func checkPerfectNumber(num int) bool {
+func checkPerfectNumber1(num int) bool {
 	if num == 1 {
 		return false
 	}
@@ -29,6 +29,24 @@ func checkPerfectNumber(num int) bool {
 	}
 
 	return sum == num
+}
+
+func checkPerfectNumber(num int) bool {
+	var result int
+
+	if num <= 1 {
+		return false
+	}
+	i := 2
+	for i < num/i && i != num {
+		if num%i == 0 {
+			result += i
+			result += num / i
+		}
+		i++
+	}
+
+	return (result + 1) == num
 }
 
 func TestCheckPerfectNumber(t *testing.T) {
