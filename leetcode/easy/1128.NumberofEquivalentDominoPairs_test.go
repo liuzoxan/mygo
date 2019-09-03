@@ -6,18 +6,18 @@ import (
 )
 
 func numEquivDominoPairs(dominoes [][]int) int {
-	m := make(map[int]int, 100)
+	var dom [100]int
 
 	for _, d := range dominoes {
 		if d[0] <= d[1] {
-			m[d[0]*10+d[1]] ++
+			dom[d[0]*10+d[1]] ++
 		} else {
-			m[d[1]*10+d[0]] ++
+			dom[d[1]*10+d[0]] ++
 		}
 	}
 
 	sum := 0
-	for _, c := range m {
+	for _, c := range dom {
 		sum += (c - 1) * c / 2
 	}
 
