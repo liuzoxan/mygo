@@ -26,7 +26,7 @@ func helper(root *TreeNode, strs *[][]byte, cur []int) {
 	helper(root.Right, strs, cur)
 }
 
-func smallestFromLeaf(root *TreeNode) string {
+func smallestFromLeaf1(root *TreeNode) string {
 	var strs [][]byte
 
 	helper(root, &strs, []int{})
@@ -50,6 +50,42 @@ func smallestFromLeaf(root *TreeNode) string {
 	}
 
 	return string(strs[0])
+}
+
+func divideConquer(root *TreeNode, parent *TreeNode) string {
+	if root == nil {
+		return ""
+	}
+
+	leftMin := divideConquer(root.Left, root)
+	rightMin := divideConquer(root.Right, root)
+
+	if leftMin == "" {
+		return rightMin + string(root.Val+'a')
+	}
+
+	if rightMin == "" {
+		return leftMin + string(root.Val+'a')
+	}
+
+	leftMin += string(root.Val + 'a')
+	rightMin += string(root.Val + 'a')
+
+	if leftMin+string(parent.Val+'a') < rightMin+string(parent.Val+'a') {
+		return leftMin
+	} else {
+		return rightMin
+	}
+}
+
+func smallestFromLeaf(root *TreeNode) string {
+	parent := &TreeNode{
+		Val:   0,
+		Left:  root,
+		Right: nil,
+	}
+
+	return divideConquer(root, parent)
 }
 
 func TestSmallestFromLeaf(t *testing.T) {
@@ -85,6 +121,34 @@ func TestSmallestFromLeaf(t *testing.T) {
 		}
 
 		So(smallestFromLeaf(t1), ShouldEqual, "dba")
+
+		t2 := &TreeNode{
+			Val: 25,
+			Left: &TreeNode{
+				Val: 1,
+				Left: &TreeNode{
+					Val: 0,
+					Left: &TreeNode{
+						Val: 1,
+						Left: &TreeNode{
+							Val:   0,
+							Left:  nil,
+							Right: nil,
+						},
+						Right: nil,
+					},
+					Right: nil,
+				},
+				Right: &TreeNode{
+					Val:   0,
+					Left:  nil,
+					Right: nil,
+				},
+			},
+			Right: nil,
+		}
+
+		So(smallestFromLeaf(t2), ShouldEqual, "ababz")
 
 	})
 }
