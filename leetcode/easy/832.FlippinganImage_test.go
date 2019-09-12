@@ -7,12 +7,8 @@ import (
 
 func flipAndInvertImage(A [][]int) [][]int {
 	for _, s := range A {
-		for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
-			s[i], s[j] = s[j], s[i]
-		}
-
-		for i := 0; i < len(s); i++ {
-			s[i] = s[i] ^ 1
+		for i, j := 0, len(s)-1; i <= j; i, j = i+1, j-1 {
+			s[i], s[j] = s[j]^1, s[i]^1
 		}
 	}
 
