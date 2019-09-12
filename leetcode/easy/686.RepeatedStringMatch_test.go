@@ -37,6 +37,24 @@ func repeatedStringMatch(A string, B string) int {
 	return -1
 }
 
+func repeatedStringMatch4(A string, B string) int {
+	byteA := []byte(A)
+	count := 1
+	for len(byteA) < len(B) {
+		byteA = append(byteA, byteA[:len(A)]...)
+		count++
+	}
+	if strings.Index(string(byteA), B) != -1 {
+		return count
+	}
+	byteA = append(byteA, byteA[:len(A)]...)
+	count++
+	if strings.Index(string(byteA), B) != -1 {
+		return count
+	}
+	return -1
+}
+
 func TestRepeatedStringMatch(t *testing.T) {
 	Convey("test", t, func() {
 		So(repeatedStringMatch("abcd", "cdabcdab"), ShouldEqual, 3)
