@@ -28,9 +28,9 @@ func repeatedStringMatch(A string, B string) int {
 	lb := len(B)
 	max := lb/la + 2
 	str := ""
-	n := 1
+	n := lb / la
 	for n <= max {
-		str += A
+		str = strings.Repeat(A, n)
 		if strings.Contains(str, B) {
 			return n
 		}
