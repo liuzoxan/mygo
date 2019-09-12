@@ -24,13 +24,10 @@ func repeatedStringMatch2(A string, B string) int {
 }
 
 func repeatedStringMatch(A string, B string) int {
-	la := len(A)
-	lb := len(B)
-	max := lb/la + 2
-	str := ""
-	n := lb / la
+	max := len(B)/len(A) + 2
+	n := len(B) / len(A)
 	for n <= max {
-		str = strings.Repeat(A, n)
+		str := strings.Repeat(A, n)
 		if strings.Contains(str, B) {
 			return n
 		}
