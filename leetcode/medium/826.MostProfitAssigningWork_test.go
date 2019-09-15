@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func maxProfitAssignment(difficulty []int, profit []int, worker []int) int {
+func maxProfitAssignment1(difficulty []int, profit []int, worker []int) int {
 	profitM := make(map[int]int)
 	for i, d := range difficulty {
 		if profit[i] > profitM[d] {
@@ -19,6 +19,49 @@ func maxProfitAssignment(difficulty []int, profit []int, worker []int) int {
 	})
 
 	maxProfitM := make(map[int]int)
+	maxProfit := 0
+	for _, d := range difficulty {
+		if maxProfit < profitM[d] {
+			maxProfit = profitM[d]
+		}
+		maxProfitM[d] = maxProfit
+	}
+
+
+	sum := 0
+	l := len(difficulty)
+	for _, a := range worker {
+		index := sort.SearchInts(difficulty, a)
+		if index == l {
+			sum += maxProfitM[difficulty[l-1]]
+			continue
+		}
+
+		if difficulty[index] == a {
+			sum += maxProfitM[a]
+		} else {
+			if index != 0 {
+				sum += maxProfitM[difficulty[index-1]]
+			}
+		}
+	}
+
+	return sum
+}
+
+func maxProfitAssignment(difficulty []int, profit []int, worker []int) int {
+	profitM := make(map[int]int, len(difficulty))
+	for i, d := range difficulty {
+		if profit[i] > profitM[d] {
+			profitM[d] = profit[i]
+		}
+	}
+
+	sort.Slice(difficulty, func(i, j int) bool {
+		return difficulty[i] < difficulty[j]
+	})
+
+	maxProfitM := make(map[int]int, len(difficulty))
 	maxProfit := 0
 	for _, d := range difficulty {
 		if maxProfit < profitM[d] {
