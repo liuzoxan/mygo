@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func largeGroupPositions(S string) [][]int {
+func largeGroupPositions1(S string) [][]int {
 	var res [][]int
 	if len(S) < 3 {
 		return res
@@ -29,6 +29,22 @@ func largeGroupPositions(S string) [][]int {
 		res = append(res, []int{preStart, preStart + preCount - 1})
 	}
 
+	return res
+}
+
+func largeGroupPositions(S string) [][]int {
+	var res [][]int
+	var i int
+	for i < len(S) {
+		s := i
+		b := S[i]
+		for i < len(S) && S[i] == b {
+			i++
+		}
+		if i-s >= 3 {
+			res = append(res, []int{s, i - 1})
+		}
+	}
 	return res
 }
 
