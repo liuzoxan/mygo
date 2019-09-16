@@ -48,11 +48,6 @@ func maxProfitAssignment1(difficulty []int, profit []int, worker []int) int {
 	return sum
 }
 
-type Profit struct {
-	difficulty int
-	profit     int
-}
-
 func maxProfitAssignment2(difficulty []int, profit []int, worker []int) int {
 	profitM := make(map[int]int, len(difficulty))
 	for i, d := range difficulty {
@@ -95,6 +90,11 @@ func maxProfitAssignment2(difficulty []int, profit []int, worker []int) int {
 	return sum
 }
 
+type Profit struct {
+	difficulty int
+	profit     int
+}
+
 func maxProfitAssignment(difficulty []int, profit []int, worker []int) int {
 	// pair difficulty and profit
 	profits := make([]Profit, len(difficulty))
@@ -131,7 +131,7 @@ func maxProfitAssignment(difficulty []int, profit []int, worker []int) int {
 }
 
 func TestMaxProfitAssignment(t *testing.T) {
-	Convey("test detect capital", t, func() {
+	Convey("test", t, func() {
 		t.Log(sort.SearchInts([]int{1, 3, 4, 6, 7, 9}, 2))
 		t.Log(sort.SearchInts([]int{1, 3, 4, 6, 7, 9}, 0))
 		t.Log(maxProfitAssignment([]int{2, 4, 6, 8, 10}, []int{10, 20, 30, 40, 50}, []int{4, 5, 6, 7}))
