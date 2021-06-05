@@ -5,6 +5,4 @@ Learning golang programming gc-friendly
 * golang feature test
 * third party package benchmark
 
-# Thanks
-Thanks to hatlonely's code! 
 
