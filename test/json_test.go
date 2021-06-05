@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestJson(t *testing.T) {
+func TestJson_Unmarshal(t *testing.T) {
 	jstr := []byte(`{"1":{"a":1, "b":2}, "2":{"a":3, "b":4}}`)
 	var data map[string]interface{} // map[1] = interface{} map[2]=interface{}
 	json.Unmarshal(jstr, &data)
@@ -13,14 +13,17 @@ func TestJson(t *testing.T) {
 	t.Log(data)
 }
 
-func TestJson_Print(t *testing.T) {
+func TestJson_Marshal(t *testing.T) {
 	type Person struct {
 		Name string `json:"object"`
 		Age  int
 	}
 
-	p := Person{}
+	p := Person{
+		Name: "tom",
+		Age:  10,
+	}
 
-	json.Unmarshal([]byte(`{"object":"tom","Age":10}`), &p)
-	t.Log(p)
+	pstr, _ := json.Marshal(p)
+	t.Log(string(pstr))
 }
